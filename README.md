@@ -68,7 +68,9 @@ https://api.nuoyacup.com/zhifu/api/login.php?user_name=XB6830504733&user_pass=9I
 
 + 3.2.4 解密body后 本来接下来想修改body里面的日期, 然后修正一下```getoneuserendtime```的日期
 # 然后发现没有必要了!!!!! 他居然把账号密码放在了Body里面!!!!!!!!!(正确的方式是放在服务器上进行控制)
+![TIM截图20190511114646.jpg](https://i.loli.net/2019/05/11/5cd665a9cf73e.jpg)
 + 3.2.5 账号密码如下: 典型的shadowsocks
+
 ![TIM截图20190509200654.jpg](https://i.loli.net/2019/05/09/5cd417ea8b5cf.jpg)
 + 3.2.6 测试成功
 
