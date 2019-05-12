@@ -35,20 +35,19 @@ https://api.nuoyacup.com/zhifu/api/login.php?user_name=XB6830504733&user_pass=9I
 https://api.nuoyacup.com/zhifu/api/getoneuserendtime.php?user_name=XB6830504733&user_pass=2okzi5
 
 ```
-	+ 3.1.1 分别打断点, 发现未走到```getoneuserendtime```时已经获取到了时间, 肯定是```login```的时候获取了时间, 然后```getoneuserendtime```这里是一个心跳, 实时跟新用户的时间(od中显示3000ms)
-	![TIM截图20190509194522.jpg](https://i.loli.net/2019/05/09/5cd413a5794e8.jpg)
-	![TIM截图20190509194408.jpg](https://i.loli.net/2019/05/09/5cd413a583249.jpg)
-	![TIM截图20190509194504.jpg](https://i.loli.net/2019/05/09/5cd413a570c60.jpg)
-		+ 3.1.1.1 图一的地址, 明显是密码加密了(原密码为图二) , 复制到浏览器中发现返回的是"没有该用户"..
-		+ 3.1.1.2 由于是.Net的估计.Net的url经过了特殊字符的处理, 继续跟踪找到原密码加密  图三 经过url编码解密之后得到上面的这个
++ 3.1.1 分别打断点, 发现未走到```getoneuserendtime```时已经获取到了时间, 肯定是```login```的时候获取了时间, 然后```getoneuserendtime```这里是一个心跳, 实时跟新用户的时间(od中显示3000ms)
 
-		```
-		https://api.nuoyacup.com/zhifu/api/login.php?user_name=XB6830504733&user_pass=9Ilb8iC7BE6/8Cn5Ok/CBQ==
-		```
-		   
-		+ 3.1.1.3 上面是url编码后的, 如果想找可以接着在堆栈找到原始的加密密码:
-		![TIM截图20190509194538.jpg](https://i.loli.net/2019/05/09/5cd4137fee64d.jpg)
+![TIM截图20190509194522.jpg](https://i.loli.net/2019/05/09/5cd413a5794e8.jpg)
+![TIM截图20190509194408.jpg](https://i.loli.net/2019/05/09/5cd413a583249.jpg)
+![TIM截图20190509194504.jpg](https://i.loli.net/2019/05/09/5cd413a570c60.jpg)
 
++ 3.1.1.1 图一的地址, 明显是密码加密了(原密码为图二) , 复制到浏览器中发现返回的是"没有该用户"..
++ 3.1.1.2 由于是.Net的估计.Net的url经过了特殊字符的处理, 继续跟踪找到原密码加密  图三 经过url编码解密之后得到上面的这个
+```
+https://api.nuoyacup.com/zhifu/api/login.php?user_name=XB6830504733&user_pass=9Ilb8iC7BE6/8Cn5Ok/CBQ==
+```
++ 3.1.1.3 上面是url编码后的, 如果想找可以接着在堆栈找到原始的加密密码:
+![TIM截图20190509194538.jpg](https://i.loli.net/2019/05/09/5cd4137fee64d.jpg)
 + 3.2 获取到上面连接的结果(直接敲的浏览器中)
 ```
 https://api.nuoyacup.com/zhifu/api/login.php?user_name=XB6830504733&user_pass=9Ilb8iC7BE6/8Cn5Ok/CBQ==
